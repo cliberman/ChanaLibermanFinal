@@ -1,7 +1,11 @@
 package edu.ti.caih313.collections.dataobj;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
+import static edu.ti.caih313.collections.dataobj.Person.Gender.MALE;
 
 public class Person {
     private Name name;
@@ -39,6 +43,17 @@ public class Person {
     // TODO -- implement toString with String.format 10 points
     @Override
     public String toString() {
-        return null;
+
+        String primaryEmailAddress;
+        if (emailAddress == null)
+        {
+            primaryEmailAddress = "no emails available";
+        }
+        else {
+            primaryEmailAddress = emailAddress.getEmailAddress();
+        }
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("MMM d, yyyy 'CE'");
+        String bday = birthDate.format(format);
+        return String.format("Person{ name = %s, gender = %s, birthdate = %s, emails = %s", name, gender, bday, primaryEmailAddress);
     }
 }

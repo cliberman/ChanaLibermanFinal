@@ -41,6 +41,10 @@ public class EmailAddress {
     // 3) end in ".edu" or ".com"
     // 20 points
     static boolean validate(String emailAddress) {
-        return false;
+        if ((emailAddress != null) && (emailAddress.contains("@"))
+                && ((emailAddress.contains(".edu")) || (emailAddress.contains(".com")))) {
+            return true;
+        }
+        else {return false;}
     }
 }
